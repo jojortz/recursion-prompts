@@ -67,10 +67,52 @@ var sumBelow = function(n) {
   return n-add + sumBelow(n-add);
 };
 
+//EC1
+//x = 2
+//y = 5
+//result = [3]
+
+//EC2
+//x = 3
+//y = 5
+//result = [3]
+
+//EC3
+//x = 4
+//y = 5
+//result = []
+
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+  var result = [];
+  var xGreater = false;
+  if(x > y) {
+    var old_x = x;
+    x = y;
+    y = old_x;
+    xGreater = true;
+  }
+  if(Math.abs(x - y) === 2) {
+    return x+1;
+  }
+  if(Math.abs(x - y) <= 1) {
+    return [];
+  }
+
+  result.push(x+1);
+  result = result.concat(range(x+1, y));
+
+  if(xGreater){
+    result = result.reverse();
+  }
+
+  return result;
 };
+
+
+
+
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
